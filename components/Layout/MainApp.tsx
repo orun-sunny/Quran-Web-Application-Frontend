@@ -5,6 +5,7 @@ import { Sidebar } from "../Layout/Sidebar";
 import { Navbar } from "../Layout/Navbar";
 
 import { FeedData, Surah, SurahIndexItem } from "../../types";
+import { SearchModal } from "./SearchModal";
 
 export type FeedQuery = { type: "surah" | "juz" | "page"; id: number };
 
@@ -153,6 +154,15 @@ export const MainApp = ({ children }: { children: React.ReactNode }) => {
           onSearchClick={() => setIsSearchOpen(true)}
         />
       </div>
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        surahs={surahsList}
+        onSurahSelect={(surahInfo) => {
+          stop();
+          setActiveFeedQuery({ type: "surah", id: surahInfo.id });
+        }}
+      />
     </div>
   );
 };
