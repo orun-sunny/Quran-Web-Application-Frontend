@@ -8,6 +8,8 @@ import { FeedData, Surah, SurahIndexItem } from "../../types";
 import { SearchModal } from "./SearchModal";
 import { RightPanel } from "./RightPanel";
 import { SurahDrawer } from "./SurahDrawer";
+import { AyatFeed } from "../AyatFeed/AyatFeed";
+import { AudioPlayer } from "../AudioPlayer/AudioPlayer";
 
 export type FeedQuery = { type: "surah" | "juz" | "page"; id: number };
 
@@ -173,9 +175,26 @@ export const MainApp = ({ children }: { children: React.ReactNode }) => {
               setActiveFeedQuery({ type: "page", id: pageId });
             }}
           />
+          <AyatFeed
+            feedData={feedData}
+            onNextFeed={handleNextFeed}
+            onPrevFeed={handlePrevFeed}
+            hasNext={
+              activeFeedQuery?.type === "surah"
+                ? surahsList.findIndex((s) => s.id === activeFeedQuery.id) <
+                  surahsList.length - 1
+                : false
+            }
+            hasPrev={
+              activeFeedQuery?.type === "surah"
+                ? surahsList.findIndex((s) => s.id === activeFeedQuery.id) > 0
+                : false
+            }
+          />
 
           <RightPanel />
         </div>
+        <AudioPlayer />
       </div>
       <SearchModal
         isOpen={isSearchOpen}
