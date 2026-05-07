@@ -1,8 +1,10 @@
 "use client";
 
 import { Activity, useEffect, useState } from "react";
+import { Sidebar } from "../Layout/Sidebar";
 import { Navbar } from "../Layout/Navbar";
-import { FeedData, SurahIndexItem } from "@/types";
+
+import { FeedData, Surah, SurahIndexItem } from "../../types";
 
 export type FeedQuery = { type: "surah" | "juz" | "page"; id: number };
 
@@ -143,6 +145,7 @@ export const MainApp = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-900">
+      <Sidebar />
       <div className="flex h-screen flex-1 flex-col pb-16 lg:pb-0 lg:pl-15">
         <Navbar
           onMenuClick={() => setIsDrawerOpen((prev) => !prev)}

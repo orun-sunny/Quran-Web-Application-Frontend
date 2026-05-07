@@ -37,7 +37,7 @@ function getSavedSettings() {
 }
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  // Default to dark mode (the app is dark-first)
+  // make to dark mode (the app is dark-first)
   const [arabicFontSize, setArabicFontSize] = useState<number>(22);
   const [translationFontSize, setTranslationFontSize] = useState<number>(16);
   const [arabicFontFace, setArabicFontFace] = useState<string>("KFGQ");

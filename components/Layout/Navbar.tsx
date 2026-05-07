@@ -10,7 +10,6 @@ import {
 import { TextAlignJustify, X } from "lucide-react";
 import { useSettings } from "../Context/SettingsContext";
 
-/* ================= Icon Button ================= */
 const IconButton = ({
   icon,
   label,
@@ -59,7 +58,6 @@ const IconButton = ({
     </div>
   );
 };
-/* ================= Navbar ================= */
 export const Navbar = ({
   onMenuClick,
   isDrawerOpen,
