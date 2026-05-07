@@ -75,7 +75,7 @@ export const AyatFeed = ({
             />
           ) : (
             <Image
-              src="/mosque.png"
+              src="/makkah.webp"
               alt="Mosque"
               fill
               sizes="80px"
