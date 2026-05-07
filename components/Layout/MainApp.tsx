@@ -6,6 +6,8 @@ import { Navbar } from "../Layout/Navbar";
 
 import { FeedData, Surah, SurahIndexItem } from "../../types";
 import { SearchModal } from "./SearchModal";
+import { RightPanel } from "./RightPanel";
+import { SurahDrawer } from "./SurahDrawer";
 
 export type FeedQuery = { type: "surah" | "juz" | "page"; id: number };
 
@@ -153,6 +155,27 @@ export const MainApp = ({ children }: { children: React.ReactNode }) => {
           isDrawerOpen={isDrawerOpen}
           onSearchClick={() => setIsSearchOpen(true)}
         />
+        <div className="flex flex-1 overflow-hidden relative">
+          <SurahDrawer
+            activeFeedQuery={activeFeedQuery}
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+            onSurahSelect={(surahInfo) => {
+              stop();
+              setActiveFeedQuery({ type: "surah", id: surahInfo.id });
+            }}
+            onJuzSelect={(juzId) => {
+              stop();
+              setActiveFeedQuery({ type: "juz", id: juzId });
+            }}
+            onPageSelect={(pageId) => {
+              stop();
+              setActiveFeedQuery({ type: "page", id: pageId });
+            }}
+          />
+
+          <RightPanel />
+        </div>
       </div>
       <SearchModal
         isOpen={isSearchOpen}
